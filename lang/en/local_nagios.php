@@ -32,6 +32,8 @@ $string['local_nagios:event_queue:description'] = 'Check the number of event han
 $string['local_nagios:event_queue:variable'] = 'Number of event handlers';
 $string['local_nagios:adhoc_task:description'] = 'Check the number of ad-hoc tasks waiting to be processed.';
 $string['local_nagios:adhoc_task:variable'] = 'The number of ad-hoc tasks.';
+$string['local_nagios:cron:description'] = 'Checks that the cron job is running properly by checking the last time it was run.';
+$string['local_nagios:cron:variable'] = 'Number of seconds since last run';
 
 $string['servicelist_help'] = 'To monitor one of these services, create a new command in your Nagios configuration, e.g.
 
@@ -41,6 +43,10 @@ $string['servicelist_help'] = 'To monitor one of these services, create a new co
     }
     
     Examples:
+    define command {
+        command_name    check_moodle_local_nagios_cron
+        command_line    /usr/lib/nagios/plugins/check_moodle -p=local_nagios -s=cron -w=300 -c=3600
+    }
     define command {
         command_name    check_moodle_local_nagios_scheduled_task_updates
         command_line    /usr/lib/nagios/plugins/check_moodle -p=local_nagios -s=scheduled_task -t=\\core\\task\\check_for_updates_task -w=10800 -c=14400
