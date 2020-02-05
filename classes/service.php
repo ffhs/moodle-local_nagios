@@ -65,13 +65,15 @@ abstract class service {
      * @return array plugin name => array('name' => '\class\implementing\service')
      */
     public static function service_list() {
-        global $CFG;
-
         $result = array();
+        $plugintypes = \core_component::get_plugin_types();
 
-        foreach (\core_component::get_plugin_types() as $plugintype => $fulldir) {
-            foreach (\core_component::get_plugin_list($plugintype) as $name => $dir) {
-                $frankenstyle = $plugintype. '_' . $name;
+        foreach (array_keys($plugintypes) as $plugintype) {
+            $plugins = \core_component::get_plugin_list($plugintype);
+
+            foreach (array_keys($plugins) as $plugin) {
+                $frankenstyle = $plugintype. '_' . $plugin;
+
                 if ($services = self::get_services($frankenstyle)) {
                     $result[$frankenstyle] = $services;
                 }

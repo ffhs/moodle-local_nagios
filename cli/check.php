@@ -24,6 +24,10 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+use local_nagios\thresholds;
+use local_nagios\threshold;
+use local_nagios\service;
+
 define('CLI_SCRIPT', 1);
 
 require_once(__DIR__.'/../../../config.php');
