@@ -15,23 +15,19 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
-* Runs service check from Nagios command.
-*
-* @package    local_nagios
-* @copyright  2014 University of Strathclyde
-* @author     Michael Aherne
-* @author     2020 Adrian Perez, Fernfachhochschule Schweiz (FFHS) <adrian.perez@ffhs.ch>
-* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-*/
+ * Runs service check from Nagios command.
+ *
+ * @package    local_nagios
+ * @copyright  2014 University of Strathclyde
+ * @author     Michael Aherne
+ * @author     2020 Adrian Perez, Fernfachhochschule Schweiz (FFHS) <adrian.perez@ffhs.ch>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
 define('CLI_SCRIPT', 1);
 
 require_once(__DIR__.'/../../../config.php');
 require_once($CFG->libdir.'/clilib.php');
-
-use local_nagios\thresholds;
-use local_nagios\threshold;
-use local_nagios\service;
 
 defined('MOODLE_INTERNAL') || die();
 

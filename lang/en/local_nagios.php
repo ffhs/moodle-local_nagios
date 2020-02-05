@@ -41,7 +41,7 @@ $string['servicelist_help'] = 'To monitor one of these services, create a new co
         command_name    check_moodle_myplugin_my_service
         command_line    /usr/lib/nagios/plugins/check_moodle -p=local_myplugin -s=my_service -w=10000 -c=20000
     }
-    
+
     Examples:
     define command {
         command_name    check_moodle_local_nagios_cron
