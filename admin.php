@@ -48,7 +48,8 @@ if ($action == 'servicelist') {
     echo $OUTPUT->header();
     echo $OUTPUT->heading("Nagios services");
     echo $out->render_servicelist($servicelist);
-    echo $OUTPUT->box(markdown_to_html(get_string('servicelist_help', 'local_nagios')));
+    echo $OUTPUT->box(markdown_to_html(get_string('servicelist_help', 'local_nagios') .
+            get_string('parameters_help', 'local_nagios')));
     echo $OUTPUT->footer();
 } else {
     die("Unknown action");

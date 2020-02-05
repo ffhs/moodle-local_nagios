@@ -53,10 +53,12 @@ list($options, $unrecognized) = cli_get_params(
 
 if ($options['help']) {
     print_help();
+    exit(0);
 }
 
 if (empty($options['plugin']) || empty($options['service'])) {
     print_help();
+    exit(0);
 }
 
 $plugin = $options['plugin'];
@@ -106,6 +108,5 @@ try {
 }
 
 function print_help() {
-    echo "Runs a nagios status.";
-    exit(3);
+    echo get_string('clicheck_help', 'local_nagios') . get_string('parameters_help', 'local_nagios');
 }
