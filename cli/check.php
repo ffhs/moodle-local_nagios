@@ -1,37 +1,46 @@
 <?php
-
-use local_nagios\thresholds;
-use local_nagios\threshold;
-use local_nagios\service;
-
-// This file is part of local_nagios
+// This file is part of Moodle - http://moodle.org/
 //
-// local_nagios is free software: you can redistribute it and/or modify
+// Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// local_nagios is distributed in the hope that it will be useful,
+// Moodle is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with local_nagios.  If not, see <http://www.gnu.org/licenses/>.
-//
-// Author: Michael Aherne
-// Copyright 2014 University of Strathclyde
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+* Runs service check from Nagios command.
+*
+* @package    local_nagios
+* @copyright  2014 University of Strathclyde
+* @author     Michael Aherne
+* @author     2020 Adrian Perez, Fernfachhochschule Schweiz (FFHS) <adrian.perez@ffhs.ch>
+* @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+*/
 
 define('CLI_SCRIPT', 1);
+
 require_once(__DIR__.'/../../../config.php');
-// require_once($CFG->libdir.'/pluginlib.php');
 require_once($CFG->libdir.'/clilib.php');
+
+use local_nagios\thresholds;
+use local_nagios\threshold;
+use local_nagios\service;
+
+defined('MOODLE_INTERNAL') || die();
 
 // Get cli options.
 list($options, $unrecognized) = cli_get_params(
         array(
                 'plugin'           => false,
                 'service'          => false,
+                'task'             => false,
                 'warning'          => false,
                 'critical'         => false,
                 'help'             => false
@@ -40,6 +49,7 @@ list($options, $unrecognized) = cli_get_params(
                 'h' => 'help',
                 'p' => 'plugin',
                 's' => 'service',
+                't' => 'task',
                 'w' => 'warning',
                 'c' => 'critical'
         )
@@ -55,6 +65,7 @@ if (empty($options['plugin']) || empty($options['service'])) {
 
 $plugin = $options['plugin'];
 $service = $options['service'];
+$task = $options['task'];
 $warning = $options['warning'];
 $critical = $options['critical'];
 
@@ -81,6 +92,9 @@ try {
     }
 
     $params = cli_get_params($service->get_param_defs());
+    if ($options['task']) {
+        $params[0]['task'] = $options['task'];
+    }
 
     $status = $service->check_status($thresholds, $params[0]);
 
