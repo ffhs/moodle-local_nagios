@@ -26,6 +26,8 @@
 
 use local_nagios\threshold;
 
+defined('MOODLE_INTERNAL') || die();
+
 class threshold_testcase extends advanced_testcase {
 
     public function test_defaults() {

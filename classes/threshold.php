@@ -63,7 +63,6 @@ class threshold {
      * @return bool
      */
     public function check($value) {
-
         $no = false;
         $yes = true;
 
@@ -78,13 +77,17 @@ class threshold {
             } else {
                 return $yes;
             }
-        } else if (!$this->startinfinity && $this->endinfinity) {
+        }
+
+        if (!$this->startinfinity && $this->endinfinity) {
             if ($this->start <= $value) {
                 return $no;
             } else {
                 return $yes;
             }
-        } else if ($this->startinfinity && !$this->endinfinity) {
+        }
+
+        if ($this->startinfinity && !$this->endinfinity) {
             if ($value <= $this->end) {
                 return $no;
             } else {
@@ -93,7 +96,6 @@ class threshold {
         } else {
             return $no;
         }
-
     }
 
     public static function from_string($string) {

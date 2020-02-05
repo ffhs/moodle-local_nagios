@@ -26,6 +26,8 @@
 
 use \local_nagios\service;
 
+defined('MOODLE_INTERNAL') || die();
+
 class local_nagios_service_testcase extends advanced_testcase {
 
     public function test_service_list() {

@@ -39,7 +39,8 @@ abstract class service {
     const NAGIOS_STATUS_CRITICAL = 2;
     const NAGIOS_STATUS_UNKNOWN = 3;
 
-    public $definition; // the definition from the db/local_nagios.php file
+    // The definition from the db/local_nagios.php file.
+    public $definition;
 
     /**
      * Check the status of the service.
