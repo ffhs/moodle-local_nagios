@@ -35,21 +35,15 @@ $string['local_nagios:adhoc_task:variable'] = 'The number of ad-hoc tasks.';
 $string['local_nagios:cron:description'] = 'Checks that the cron job is running properly by checking the last time it was run.';
 $string['local_nagios:cron:variable'] = 'Number of seconds since last run';
 
-$string['servicelist_help'] = 'To monitor one of these services, create a new command in your Nagios configuration, e.g.
+$string['servicelist_help'] = 'To monitor one of these services, create a new command in your Nagios (NRPE) configuration, e.g.
 
-    define command {
-        command_name    check_moodle_myplugin_my_service
-        command_line    /usr/lib/nagios/plugins/check_moodle -p=local_myplugin -s=my_service -w=10000 -c=20000
-    }
+    // CentOS
+    command[check_moodle]=/usr/lib64/nagios/plugins/check_moodle -p=$ARG1$ -s=$ARG2$ -w=$ARG3$ -c=$ARG4$ -t=$ARG5$
 
-    Examples:
+    // Ubuntu
     define command {
-        command_name    check_moodle_local_nagios_cron
-        command_line    /usr/lib/nagios/plugins/check_moodle -p=local_nagios -s=cron -w=300 -c=3600
-    }
-    define command {
-        command_name    check_moodle_local_nagios_scheduled_task_updates
-        command_line    /usr/lib/nagios/plugins/check_moodle -p=local_nagios -s=scheduled_task -t=\\core\\task\\check_for_updates_task -w=10800 -c=14400
+        command_name    check_moodle
+        command_line    /usr/lib/nagios/plugins/check_moodle -p=$ARG1$ -s=$ARG2$ -w=$ARG3$ -c=$ARG4$ -t=$ARG5$
     }
 
 This command can then be used in Nagios service definitions';
@@ -58,9 +52,9 @@ $string['parameters_help'] = ' with the following parameters:
 
     -p : the frankenstyle name of the plugin, shown in the first column
     -s : the name of the service, shown in the second column
-    -t : the name of the scheduled task (only needed in scheduled_task service)
     -w : the warning threshold
     -c : the critical threshold
+    -t : the name of the scheduled task (only needed in scheduled_task service)
 
-The last column describes the variable quantity that will be compared against the warning and critical
+The last column "Variable" describes the quantity that will be compared against the warning and critical
 thresholds to determine the service status.';

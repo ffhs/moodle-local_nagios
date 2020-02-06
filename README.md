@@ -52,15 +52,27 @@ or GUI (Site administration -> Notifications).
 
 ## Configuration
 ### CentOS
-Create or update existing NRPE config file (e.g. CentOS `/etc/nrpe.d/nrpe_additional_monitoring.cfg`) and define new commands:
+Create or update existing NRPE config file (e.g. CentOS `/etc/nrpe.d/nrpe_additional_monitoring.cfg`) and define new command:
 
 ```
-command[check_moodle_local_nagios_cron]=/usr/lib64/nagios/plugins/check_moodle -p=local_nagios -s=cron -w=300 -c=3600
-command[check_moodle_local_nagios_adhoc_tasks]=/usr/lib64/nagios/plugins/check_moodle -p=local_nagios -s=adhoc_task -w=100 -c=200
-command[check_moodle_local_nagios_scheduled_task_updates]=/usr/lib64/nagios/plugins/check_moodle -p=local_nagios -s=scheduled_task -t=\\core\\task\\check_for_updates_task -w=10800 -c=14400
+command[check_moodle]=/usr/lib64/nagios/plugins/check_moodle -p=$ARG1$ -s=$ARG2$ -w=$ARG3$ -c=$ARG4$ -t=$ARG5$
 ```
 
-*Nagios can now execute the commands with the names in the square brackets*
+Examples of Services in Nagios `Core Config Manager`:
+```
+// Check command
+check_nrpe
+
+// $ARG1$
+check_moodle
+
+// $ARG2$ (only one line per Service)
+-a local_nagios cron 300 3600
+-a local_nagios adhoc_task 100 200
+-a local_nagios scheduled_task 100 200 /core/task/check_for_updates_task
+```
+
+*Nagios can now execute the `check_moodle` command with the defined arguments.*
 
 ### Ubuntu
 1. Create a new file, moodle.cfg, in your Nagios plugins configuration directory (/etc/nagios-plugins/config).

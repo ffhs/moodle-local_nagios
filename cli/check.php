@@ -95,6 +95,8 @@ try {
 
     $params = cli_get_params($service->get_param_defs());
     if ($options['task']) {
+        // We pass the task classname with forward slashes in the Nagios 'check_nrpe' arguments.
+        $options['task'] = str_replace('/', '\\', $options['task']);
         $params[0]['task'] = $options['task'];
     }
 
