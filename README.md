@@ -74,6 +74,16 @@ check_moodle
 
 *Nagios can now execute the `check_moodle` command with the defined arguments.*
 
+---
+
+**Please be aware that if you are using `SELinux` you must run following commands, so that NRPE can execute the checks:**
+```bash
+usermod -a -G apache nrpe
+setfacl --modify group:apache:r-x /var/www/html/moodle/local/nagios/cli/check_moodle
+```
+
+**If you're not doing that, it will cause nrpe to output the `NRPE: Unable to read output`.**
+
 ### Ubuntu
 1. Create a new file, moodle.cfg, in your Nagios plugins configuration directory (/etc/nagios-plugins/config).
 2. Add a command definition for each Moodle service to be monitored, e.g.:
