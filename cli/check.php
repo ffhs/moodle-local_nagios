@@ -27,6 +27,7 @@
 use local_nagios\thresholds;
 use local_nagios\threshold;
 use local_nagios\service;
+use local_nagios\nagios;
 
 define('CLI_SCRIPT', 1);
 
@@ -71,6 +72,7 @@ $task = $options['task'];
 $warning = $options['warning'];
 $critical = $options['critical'];
 
+$nagios = new nagios();
 $thresholds = new thresholds();
 
 if ($options['warning']) {
@@ -81,16 +83,14 @@ if ($options['critical']) {
 }
 
 if (empty($thresholds->critical) && empty($thresholds->warning)) {
-    echo "No valid thresholds given";
-    exit(service::NAGIOS_STATUS_UNKNOWN);
+    $nagios->send_unknown('No valid thresholds given');
 }
 
 try {
     $service = service::get_service($plugin, $service);
 
     if (empty($service)) {
-        echo "Unable to get service $service from $plugin";
-        exit(3);
+        $nagios->send_unknown('Unable to get service ' . $service . ' from ' . $plugin);
     }
 
     $params = cli_get_params($service->get_param_defs());
@@ -103,14 +103,27 @@ try {
     $status = $service->check_status($thresholds, $params[0]);
 
     if (is_null($status)) {
-        throw new Exception("Service check returned no status");
+        $nagios->send_unknown('Service check returned no status');
     }
 
-    echo $status->text;
-    exit($status->status);
+    switch ($status->status) {
+        case 0:
+            $nagios->send_good($status->text);
+            break;
+        case 1:
+            $nagios->send_warning($status->text);
+            break;
+        case 2:
+            $nagios->send_critical($status->text);
+            break;
+        case 3:
+            $nagios->send_unknown($status->text);
+            break;
+        default:
+            $nagios->send_unknown($status->text);
+    }
 } catch (Exception $e) {
-    echo "ERROR: " . $e->getMessage();
-    exit(service::NAGIOS_STATUS_UNKNOWN);
+    $nagios->send_unknown($e->getMessage());
 }
 
 function print_help() {
