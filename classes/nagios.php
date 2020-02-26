@@ -45,39 +45,43 @@ class nagios {
      * Sends a good Nagios response, with message.
      *
      * @param string  $msg the message to append the Nagios response.
+     * @param int $status the status to append the Nagios response
      */
-    public function send_good($msg) {
-        printf ("OK: $msg (Checked $this->now)\n");
-        exit(0);
+    public function send_good($msg, $status = service::NAGIOS_STATUS_OK) {
+        printf ("OK: $msg (Checked $this->now) | status=$status \n");
+        exit($status);
     }
 
     /**
      * Sends a warning Nagios response, with message.
      *
-     * @param string  $msg the message to append the Nagios response.
+     * @param string $msg the message to append the Nagios response.
+     * @param int $status the status to append the Nagios response
      */
-    public function send_warning($msg) {
-        printf ("WARNING: $msg (Checked $this->now)\n");
-        exit(1);
+    public function send_warning($msg, $status = service::NAGIOS_STATUS_WARNING) {
+        printf ("WARNING: $msg (Checked $this->now) | status=$status \n");
+        exit($status);
     }
 
     /**
      * Sends a critical Nagios response, with message.
      *
-     * @param string  $msg the message to append the Nagios response.
+     * @param string $msg the message to append the Nagios response.
+     * @param int $status the status to append the Nagios response
      */
-    public function send_critical($msg) {
-        printf ("CRITICAL: $msg (Checked $this->now)\n");
-        exit(2);
+    public function send_critical($msg, $status = service::NAGIOS_STATUS_CRITICAL) {
+        printf ("CRITICAL: $msg (Checked $this->now) | status=$status \n");
+        exit($status);
     }
 
     /**
      * Sends an unknown Nagios response, with message.
      *
      * @param string  $msg the message to append the Nagios response.
+     * @param int $status the status to append the Nagios response
      */
-    public function send_unknown($msg) {
-        printf("UNKNOWN: $msg\n");
-        exit(3);
+    public function send_unknown($msg, $status = service::NAGIOS_STATUS_UNKNOWN) {
+        printf("UNKNOWN: $msg | status=$status \n");
+        exit($status);
     }
 }
