@@ -40,7 +40,7 @@ Install the plugin like any other plugin to folder `local/nagios`.
 Use git to install this plugin: 
 ```bash
 cd /var/www/html/moodle
-git clone https://github.com/University-of-Strathclyde-LTE-Team/moodle-local_nagios.git local/nagios
+git clone https://github.com/ffhs/moodle-local_nagios.git local/nagios
 echo '/local/nagios/' >> .git/info/exclude
 ```
 
@@ -52,7 +52,7 @@ or GUI (Site administration -> Notifications).
 
 ## Configuration
 ### CentOS
-Create or update existing NRPE config file (e.g. CentOS `/etc/nrpe.d/nrpe_additional_monitoring.cfg`) and define new command:
+Create or update existing NRPE config file (e.g. CentOS `/etc/nrpe.d/51_nrpe_additional_monitoring.cfg`) and define new command:
 
 ```
 command[check_moodle]=/usr/lib64/nagios/plugins/check_moodle -p=$ARG1$ -s=$ARG2$ -w=$ARG3$ -c=$ARG4$ -t=$ARG5$
@@ -80,6 +80,7 @@ check_moodle
 ```bash
 usermod -a -G apache nrpe
 setfacl --modify group:apache:r-x /var/www/html/moodle/local/nagios/cli/check_moodle
+semodule -i /var/www/html/moodle/local/nagios/lib/local_nagios.pp
 ```
 
 **If you're not doing that, it will cause nrpe to output the `NRPE: Unable to read output`.**

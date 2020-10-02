@@ -1,0 +1,11 @@
+
+module local_nagios 1.0;
+
+require {
+	type nrpe_t;
+	type nrpe_exec_t;
+	class dir search;
+}
+
+#============= nrpe_t ==============
+allow nrpe_t nrpe_exec_t:dir search;
