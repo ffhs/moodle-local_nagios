@@ -80,7 +80,11 @@ check_moodle
 ```bash
 usermod -a -G apache nrpe
 setfacl --modify group:apache:r-x /var/www/html/moodle/local/nagios/cli/check_moodle
-semodule -i /var/www/html/moodle/local/nagios/lib/local_nagios.pp
+semanage fcontext -a -t nagios_unconfined_plugin_exec_t /var/www/html/moodle/local/nagios/cli/check_moodle
+restorecon -Frv /var/www/html/moodle/local/nagios/cli/check_moodle
+
+// Not needed anymore.
+#semodule -i /var/www/html/moodle/local/nagios/lib/local_nagios.pp
 ```
 
 **If you're not doing that, it will cause nrpe to output the `NRPE: Unable to read output`.**
