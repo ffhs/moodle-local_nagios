@@ -40,6 +40,7 @@ class adhoc_task_service extends service {
         $result = new status_result();
         $result->status = $thresholds->check($count);
         $result->text = "$count ad-hoc tasks in queue";
+        $result->perfdata = $count;
 
         return $result;
     }

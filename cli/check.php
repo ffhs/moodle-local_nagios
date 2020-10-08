@@ -108,13 +108,13 @@ try {
 
     switch ($status->status) {
         case 0:
-            $nagios->send_good($status->text);
+            $nagios->send_good($status->text, $status->perfdata);
             break;
         case 1:
-            $nagios->send_warning($status->text);
+            $nagios->send_warning($status->text, $status->perfdata);
             break;
         case 2:
-            $nagios->send_critical($status->text);
+            $nagios->send_critical($status->text, $status->perfdata);
             break;
         case 3:
             $nagios->send_unknown($status->text);

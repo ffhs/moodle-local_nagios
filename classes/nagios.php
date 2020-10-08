@@ -45,43 +45,43 @@ class nagios {
      * Sends a good Nagios response, with message.
      *
      * @param string  $msg the message to append the Nagios response.
-     * @param int $status the status to append the Nagios response
+     * @param int $perfdata the perfdata to append the Nagios response
      */
-    public function send_good($msg, $status = service::NAGIOS_STATUS_OK) {
-        printf ("OK: $msg (Checked $this->now) | status=$status \n");
-        exit($status);
+    public function send_good($msg, $perfdata) {
+        printf ("OK: $msg (Checked $this->now) | result=$perfdata \n");
+        exit(service::NAGIOS_STATUS_OK);
     }
 
     /**
      * Sends a warning Nagios response, with message.
      *
      * @param string $msg the message to append the Nagios response.
-     * @param int $status the status to append the Nagios response
+     * @param int $perfdata the perfdata to append the Nagios response
      */
-    public function send_warning($msg, $status = service::NAGIOS_STATUS_WARNING) {
-        printf ("WARNING: $msg (Checked $this->now) | status=$status \n");
-        exit($status);
+    public function send_warning($msg, $perfdata) {
+        printf ("WARNING: $msg (Checked $this->now) | result=$perfdata \n");
+        exit(service::NAGIOS_STATUS_WARNING);
     }
 
     /**
      * Sends a critical Nagios response, with message.
      *
      * @param string $msg the message to append the Nagios response.
-     * @param int $status the status to append the Nagios response
+     * @param int $perfdata the perfdata to append the Nagios response
      */
-    public function send_critical($msg, $status = service::NAGIOS_STATUS_CRITICAL) {
-        printf ("CRITICAL: $msg (Checked $this->now) | status=$status \n");
-        exit($status);
+    public function send_critical($msg, $perfdata) {
+        printf ("CRITICAL: $msg (Checked $this->now) | result=$perfdata \n");
+        exit(service::NAGIOS_STATUS_CRITICAL);
     }
 
     /**
      * Sends an unknown Nagios response, with message.
      *
      * @param string  $msg the message to append the Nagios response.
-     * @param int $status the status to append the Nagios response
+     * @param int $perfdata the perfdata to append the Nagios response
      */
-    public function send_unknown($msg, $status = service::NAGIOS_STATUS_UNKNOWN) {
-        printf("UNKNOWN: $msg | status=$status \n");
-        exit($status);
+    public function send_unknown($msg, $perfdata) {
+        printf("UNKNOWN: $msg | result=$perfdata \n");
+        exit(service::NAGIOS_STATUS_UNKNOWN);
     }
 }
