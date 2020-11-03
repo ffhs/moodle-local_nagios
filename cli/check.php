@@ -117,10 +117,10 @@ try {
             $nagios->send_critical($status->text, $status->perfdata);
             break;
         case 3:
-            $nagios->send_unknown($status->text);
+            $nagios->send_unknown($status->text, $status->perfdata);
             break;
         default:
-            $nagios->send_unknown($status->text);
+            $nagios->send_unknown($status->text, $status->perfdata);
     }
 } catch (Exception $e) {
     $nagios->send_unknown($e->getMessage());

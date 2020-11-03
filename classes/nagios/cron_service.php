@@ -52,6 +52,7 @@ class cron_service extends service {
             $result->text = "Cron has never run";
         } else {
             $result->text = "Cron last ran at " . date(DATE_RSS, $lastcron) . ", $difference seconds ago";
+            $result->perfdata = 1;
         }
 
         return $result;

@@ -56,6 +56,7 @@ class scheduled_task_service extends \local_nagios\service {
             $timeelapsed = time() - $lastrun;
             $result->status = $thresholds->check($timeelapsed);
             $result->text = "Last ran at " . date(DATE_RSS, $lastrun) . ", $timeelapsed seconds ago";
+            $result->perfdata = 1;
         }
 
         return $result;

@@ -44,6 +44,7 @@ class event_queue_service extends service {
         $result = new status_result();
         $result->status = $thresholds->check($count);
         $result->text = "$count events in queue";
+        $result->perfdata = $count;
 
         return $result;
     }
