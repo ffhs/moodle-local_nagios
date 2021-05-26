@@ -1,4 +1,4 @@
-# Moodle Nagios Monitoring ![Moodle Plugin CI](https://github.com/ffhs/moodle-local_nagios/workflows/Moodle%20Plugin%20CI/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/ffhs/moodle-local_nagios/badge.svg?branch=MOODLE_38_STABLE)](https://coveralls.io/github/adpe/moodle-local_pluginsfetcher?branch=MOODLE_38_STABLE)
+# Moodle Nagios Monitoring ![Moodle Plugin CI](https://github.com/ffhs/moodle-local_nagios/workflows/Moodle%20Plugin%20CI/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/ffhs/moodle-local_nagios/badge.svg?branch=MOODLE_39_STABLE)](https://coveralls.io/github/adpe/moodle-local_pluginsfetcher?branch=MOODLE_39_STABLE)
 
 This is a Moodle plugin to simplify monitoring the Moodle service (as opposed to the hardware and infrastructure)
 using [Nagios](http://www.nagios.org/). It provides:
