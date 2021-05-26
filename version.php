@@ -28,6 +28,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_nagios';
 $plugin->version   = 2021052600;
-$plugin->requires  = 2020110900;
+$plugin->requires  = 2021051700;
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = 'v3.10-r1';
+$plugin->release   = 'v3.11-r1';
