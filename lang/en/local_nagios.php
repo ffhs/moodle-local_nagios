@@ -26,7 +26,8 @@
 
 $string['pluginname'] = 'Nagios monitoring';
 
-$string['local_nagios:scheduled_task:description'] = 'Check the time since the given scheduled task last completed. Parameter "task" is full classname of task class.';
+$string['local_nagios:scheduled_task:description'] =
+    'Check the time since the given scheduled task last completed. Parameter "task" is full classname of task class.';
 $string['local_nagios:scheduled_task:variable'] = 'Number of seconds since last run';
 $string['local_nagios:event_queue:description'] = 'Check the number of event handlers in the old events system.';
 $string['local_nagios:event_queue:variable'] = 'Number of event handlers';
@@ -34,6 +35,9 @@ $string['local_nagios:adhoc_task:description'] = 'Check the number of ad-hoc tas
 $string['local_nagios:adhoc_task:variable'] = 'The number of ad-hoc tasks.';
 $string['local_nagios:cron:description'] = 'Checks that the cron job is running properly by checking the last time it was run.';
 $string['local_nagios:cron:variable'] = 'Number of seconds since last run';
+$string['local_nagios:log_task:description'] =
+    'Checks the number of failed tasks (scheduled/ad-hoc) in the last 5 minutes (default). Parameter "strtotime" is the textual datetime to be used instead of the default.';
+$string['local_nagios:log_task:variable'] = 'Number of failed tasks';
 
 $string['servicelist_help'] = 'To monitor one of these services, create a new command in your Nagios (NRPE) configuration, e.g.
 
@@ -55,6 +59,7 @@ $string['parameters_help'] = ' with the following parameters:
     -w : the warning threshold
     -c : the critical threshold
     -t : the name of the scheduled task (only needed in scheduled_task service)
+    -x : the textual datetime description (only needed in task_log service)
 
 The last column "Variable" describes the quantity that will be compared against the warning and critical
 thresholds to determine the service status.';
