@@ -42,12 +42,12 @@ $string['local_nagios:log_task:variable'] = 'Number of failed tasks';
 $string['servicelist_help'] = 'To monitor one of these services, create a new command in your Nagios (NRPE) configuration, e.g.
 
     // CentOS
-    command[check_moodle]=/usr/lib64/nagios/plugins/check_moodle -p=$ARG1$ -s=$ARG2$ -w=$ARG3$ -c=$ARG4$ -t=$ARG5$
+    command[check_moodle]=/usr/lib64/nagios/plugins/check_moodle -p=$ARG1$ -s=$ARG2$ -w=$ARG3$ -c=$ARG4$ -t=$ARG5$ -x=$ARG6$
 
     // Ubuntu
     define command {
         command_name    check_moodle
-        command_line    /usr/lib/nagios/plugins/check_moodle -p=$ARG1$ -s=$ARG2$ -w=$ARG3$ -c=$ARG4$ -t=$ARG5$
+        command_line    /usr/lib/nagios/plugins/check_moodle -p=$ARG1$ -s=$ARG2$ -w=$ARG3$ -c=$ARG4$ -t=$ARG5$ -x=$ARG6$
     }
 
 This command can then be used in Nagios service definitions';

@@ -64,7 +64,7 @@ or GUI (Site administration -> Notifications).
 Create or update existing NRPE config file (e.g. CentOS `/etc/nrpe.d/51_nrpe_additional_monitoring.cfg`) and define new command:
 
 ```
-command[check_moodle]=/usr/lib64/nagios/plugins/check_moodle -p=$ARG1$ -s=$ARG2$ -w=$ARG3$ -c=$ARG4$ -t=$ARG5$
+command[check_moodle]=/usr/lib64/nagios/plugins/check_moodle -p=$ARG1$ -s=$ARG2$ -w=$ARG3$ -c=$ARG4$ -t=$ARG5$ -x=$ARG6$
 ```
 
 Examples of Services in Nagios `Core Config Manager`:
