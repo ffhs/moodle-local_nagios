@@ -72,7 +72,7 @@ class threshold {
         }
 
         if (!$this->endinfinity && !$this->startinfinity) {
-            if ($this->start <= $value && $value <= $this->end) {
+            if ($this->start <= $value && $value < $this->end) {
                 return $no;
             } else {
                 return $yes;
