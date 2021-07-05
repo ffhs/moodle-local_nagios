@@ -41,5 +41,11 @@ $services = array(
     ),
     'cron' => array(
         'classname' => 'local_nagios\nagios\cron_service'
-    )
+    ),
+    'log_task' => array(
+        'classname' => 'local_nagios\nagios\log_task_service',
+        'params' => array(
+            'strtotime' => false
+        )
+    ),
 );

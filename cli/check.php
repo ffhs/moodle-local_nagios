@@ -31,29 +31,31 @@ use local_nagios\nagios;
 
 define('CLI_SCRIPT', 1);
 
-require_once(__DIR__.'/../../../config.php');
-require_once($CFG->libdir.'/clilib.php');
+require_once(__DIR__ . '/../../../config.php');
+require_once($CFG->libdir . '/clilib.php');
 
 defined('MOODLE_INTERNAL') || die();
 
 // Get cli options.
 list($options, $unrecognized) = cli_get_params(
-        array(
-                'plugin'           => false,
-                'service'          => false,
-                'task'             => false,
-                'warning'          => false,
-                'critical'         => false,
-                'help'             => false
-        ),
-        array(
-                'h' => 'help',
-                'p' => 'plugin',
-                's' => 'service',
-                't' => 'task',
-                'w' => 'warning',
-                'c' => 'critical'
-        )
+    array(
+        'plugin' => false,
+        'service' => false,
+        'task' => false,
+        'strtotime' => false,
+        'warning' => false,
+        'critical' => false,
+        'help' => false
+    ),
+    array(
+        'h' => 'help',
+        'p' => 'plugin',
+        's' => 'service',
+        't' => 'task',
+        'x' => 'strtotime',
+        'w' => 'warning',
+        'c' => 'critical'
+    )
 );
 
 if ($options['help']) {
@@ -98,6 +100,10 @@ try {
         // We pass the task classname with forward slashes in the Nagios 'check_nrpe' arguments.
         $options['task'] = str_replace('/', '\\', $options['task']);
         $params[0]['task'] = $options['task'];
+    }
+
+    if ($options['strtotime']) {
+        $params[0]['strtotime'] = $options['strtotime'];
     }
 
     $status = $service->check_status($thresholds, $params[0]);

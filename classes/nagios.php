@@ -19,8 +19,10 @@
  *
  * Numeric value:   |   Status  |   Description
  * 0                |    OK     |   The plugin was able to check the service and it appeared to be functioning properly.
- * 1                |  Warning  |   The plugin was able to check the service, but it appeared to be above some "warning" threshold or did not appear to be working properly.
- * 2                |  Critical |   The plugin detected that either the service was not running or it was above some "critical" threshold.
+ * 1                |  Warning  |   The plugin was able to check the service, but it appeared to be above some "warning" threshold
+ * or did not appear to be working properly.
+ * 2                |  Critical |   The plugin detected that either the service was not running or it was above some "critical"
+ * threshold.
  * 3                |  Unknown  |   The plugin was unable to determine the status of the service.
  *
  * @package    local_nagios
@@ -41,14 +43,15 @@ class nagios {
         $format = '%b %d %H:%M:%S';
         $this->now = userdate(time(), $format);
     }
+
     /**
      * Sends a good Nagios response, with message.
      *
-     * @param string  $msg the message to append the Nagios response.
+     * @param string $msg the message to append the Nagios response.
      * @param int $perfdata the perfdata to append the Nagios response
      */
     public function send_good($msg, $perfdata = 0) {
-        printf ("OK: $msg (Checked $this->now) | result=$perfdata \n");
+        printf("OK: $msg (Checked $this->now) | result=$perfdata \n");
         exit(service::NAGIOS_STATUS_OK);
     }
 
@@ -59,7 +62,7 @@ class nagios {
      * @param int $perfdata the perfdata to append the Nagios response
      */
     public function send_warning($msg, $perfdata = 0) {
-        printf ("WARNING: $msg (Checked $this->now) | result=$perfdata \n");
+        printf("WARNING: $msg (Checked $this->now) | result=$perfdata \n");
         exit(service::NAGIOS_STATUS_WARNING);
     }
 
@@ -70,14 +73,14 @@ class nagios {
      * @param int $perfdata the perfdata to append the Nagios response
      */
     public function send_critical($msg, $perfdata = 0) {
-        printf ("CRITICAL: $msg (Checked $this->now) | result=$perfdata \n");
+        printf("CRITICAL: $msg (Checked $this->now) | result=$perfdata \n");
         exit(service::NAGIOS_STATUS_CRITICAL);
     }
 
     /**
      * Sends an unknown Nagios response, with message.
      *
-     * @param string  $msg the message to append the Nagios response.
+     * @param string $msg the message to append the Nagios response.
      * @param int $perfdata the perfdata to append the Nagios response
      */
     public function send_unknown($msg, $perfdata = 0) {
