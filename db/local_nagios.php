@@ -48,4 +48,11 @@ $services = array(
             'strtotime' => false
         )
     ),
+    'errors_in_table' => array(
+        'classname' => 'local_nagios\nagios\errors_in_table_service',
+        'params' => array(
+            'table' => false,
+            'condition' => false
+        )
+    ),
 );

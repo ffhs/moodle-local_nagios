@@ -38,6 +38,9 @@ $string['local_nagios:cron:variable'] = 'Number of seconds since last run';
 $string['local_nagios:log_task:description'] =
     'Checks the number of failed tasks (scheduled/ad-hoc) in the last 5 minutes (default). Parameter "strtotime" is the textual datetime to be used instead of the default.';
 $string['local_nagios:log_task:variable'] = 'Number of failed tasks';
+$string['local_nagios:errors_in_table:description'] =
+    'Checks the number of errors in a database table. Parameter "table" and "condition" must be provided.';
+$string['local_nagios:errors_in_table:variable'] = 'Number of errors';
 
 $string['servicelist_help'] = 'To monitor one of these services, create a new command in your Nagios (NRPE) configuration, e.g.
 
@@ -60,6 +63,8 @@ $string['parameters_help'] = ' with the following parameters:
     -c : the critical threshold
     -t : the name of the scheduled task (only needed in scheduled_task service)
     -x : the textual datetime description (only needed in task_log service)
+    -y : the table name (only needed in errors_in_table service)
+    -z : the where condition statement (only needed in errors_in_table service)
 
 The last column "Variable" describes the quantity that will be compared against the warning and critical
 thresholds to determine the service status.';
