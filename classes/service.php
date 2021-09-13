@@ -124,5 +124,4 @@ abstract class service {
 
         return $result;
     }
-
 }

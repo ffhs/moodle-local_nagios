@@ -31,6 +31,7 @@ class local_nagios_renderer extends plugin_renderer_base {
     public function render_servicelist($servicelist) {
         $table = new html_table();
         $table->head = array('Plugin', 'Service name', 'Class', 'Description', 'Variable');
+
         foreach ($servicelist as $plugin => $pluginservices) {
             foreach ($pluginservices as $name => $pluginservice) {
                 $row = new html_table_row(array($plugin, $name, $pluginservice['classname']));
@@ -39,7 +40,7 @@ class local_nagios_renderer extends plugin_renderer_base {
                 $table->data[] = $row;
             }
         }
+
         return html_writer::table($table);
     }
-
 }

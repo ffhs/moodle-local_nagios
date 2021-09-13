@@ -48,5 +48,4 @@ class event_queue_service extends service {
 
         return $result;
     }
-
 }

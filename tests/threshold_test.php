@@ -71,5 +71,4 @@ class threshold_testcase extends advanced_testcase {
         $this->assertEquals(threshold::INSIDE, $t3->alerton);
 
     }
-
 }

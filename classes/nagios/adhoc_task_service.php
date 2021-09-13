@@ -44,5 +44,4 @@ class adhoc_task_service extends service {
 
         return $result;
     }
-
 }

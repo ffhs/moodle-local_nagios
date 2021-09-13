@@ -61,5 +61,4 @@ class scheduled_task_service extends \local_nagios\service {
 
         return $result;
     }
-
 }
