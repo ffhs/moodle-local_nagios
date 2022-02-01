@@ -42,9 +42,11 @@ class thresholds {
         if (!empty($this->critical) && $this->critical->check($value)) {
             return service::NAGIOS_STATUS_CRITICAL;
         }
+
         if (!empty($this->warning) && $this->warning->check($value)) {
             return service::NAGIOS_STATUS_WARNING;
         }
+
         return service::NAGIOS_STATUS_OK;
     }
 }

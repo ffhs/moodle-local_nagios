@@ -42,6 +42,7 @@ class cron_service extends service {
         } else {
             $lastcron = $DB->get_field_sql('SELECT MAX(lastruntime) FROM {task_scheduled}');
         }
+
         $currenttime = time();
         $difference = $currenttime - $lastcron;
 
@@ -57,5 +58,4 @@ class cron_service extends service {
 
         return $result;
     }
-
 }

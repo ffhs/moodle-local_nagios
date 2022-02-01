@@ -40,5 +40,4 @@ class thresholds_testcase extends advanced_testcase {
         $this->assertEquals(service::NAGIOS_STATUS_WARNING, $t1->check(15));
         $this->assertEquals(service::NAGIOS_STATUS_OK, $t1->check(5));
     }
-
 }

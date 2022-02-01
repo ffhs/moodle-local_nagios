@@ -43,6 +43,8 @@ list($options, $unrecognized) = cli_get_params(
         'service' => false,
         'task' => false,
         'strtotime' => false,
+        'table' => false,
+        'condition' => false,
         'warning' => false,
         'critical' => false,
         'help' => false
@@ -53,6 +55,8 @@ list($options, $unrecognized) = cli_get_params(
         's' => 'service',
         't' => 'task',
         'x' => 'strtotime',
+        'y' => 'table',
+        'z' => 'condition',
         'w' => 'warning',
         'c' => 'critical'
     )
@@ -104,6 +108,14 @@ try {
 
     if ($options['strtotime']) {
         $params[0]['strtotime'] = $options['strtotime'];
+    }
+
+    if ($options['table']) {
+        $params[0]['table'] = $options['table'];
+    }
+
+    if ($options['condition']) {
+        $params[0]['condition'] = $options['condition'];
     }
 
     $status = $service->check_status($thresholds, $params[0]);
