@@ -34,8 +34,6 @@ use local_nagios\service;
 use local_nagios\status_result;
 use local_nagios\thresholds;
 
-defined('MOODLE_INTERNAL') || die();
-
 class event_queue_service extends service {
 
     public function check_status(thresholds $thresholds, $params = array()) {

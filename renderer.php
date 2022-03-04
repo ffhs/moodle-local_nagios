@@ -24,13 +24,11 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 class local_nagios_renderer extends plugin_renderer_base {
 
     public function render_servicelist($servicelist) {
         $table = new html_table();
-        $table->head = array('Plugin', 'Service name', 'Class', 'Description', 'Variable');
+        $table->head = ['Plugin', 'Service name', 'Class', 'Description', 'Variable'];
 
         foreach ($servicelist as $plugin => $pluginservices) {
             foreach ($pluginservices as $name => $pluginservice) {

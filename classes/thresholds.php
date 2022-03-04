@@ -26,8 +26,6 @@
 
 namespace local_nagios;
 
-defined('MOODLE_INTERNAL') || die();
-
 class thresholds {
 
     public $warning;

@@ -54,5 +54,5 @@ $services = array(
             'table' => false,
             'condition' => false
         )
-    ),
+    )
 );
