@@ -27,8 +27,6 @@
 
 namespace local_nagios;
 
-defined('MOODLE_INTERNAL') || die();
-
 abstract class service {
 
     const SERVICELIST_FUNCTION = 'nagios_services';
@@ -124,5 +122,4 @@ abstract class service {
 
         return $result;
     }
-
 }

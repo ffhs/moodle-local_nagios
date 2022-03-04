@@ -24,11 +24,11 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-use \local_nagios\service;
+namespace local_nagios;
 
-defined('MOODLE_INTERNAL') || die();
+use advanced_testcase;
 
-class local_nagios_service_testcase extends advanced_testcase {
+class service_test extends advanced_testcase {
 
     public function test_service_list() {
         $list = service::service_list();

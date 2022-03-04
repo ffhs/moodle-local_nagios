@@ -24,11 +24,11 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-use local_nagios\threshold;
+namespace local_nagios;
 
-defined('MOODLE_INTERNAL') || die();
+use advanced_testcase;
 
-class threshold_testcase extends advanced_testcase {
+class threshold_test extends advanced_testcase {
 
     public function test_defaults() {
         $threshold1 = new threshold();

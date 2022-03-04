@@ -28,13 +28,11 @@
 namespace local_nagios\nagios;
 
 use local_nagios\invalid_service_exception;
+use local_nagios\service;
 use local_nagios\status_result;
 use local_nagios\thresholds;
-use local_nagios\service;
 
-defined('MOODLE_INTERNAL') || die();
-
-class scheduled_task_service extends \local_nagios\service {
+class scheduled_task_service extends service {
 
     public function check_status(thresholds $thresholds, $params = array()) {
         if (empty($params['task'])) {
@@ -61,5 +59,4 @@ class scheduled_task_service extends \local_nagios\service {
 
         return $result;
     }
-
 }

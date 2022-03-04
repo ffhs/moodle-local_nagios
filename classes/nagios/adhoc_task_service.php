@@ -26,11 +26,9 @@
 
 namespace local_nagios\nagios;
 
+use local_nagios\service;
 use local_nagios\status_result;
 use local_nagios\thresholds;
-use local_nagios\service;
-
-defined('MOODLE_INTERNAL') || die();
 
 class adhoc_task_service extends service {
 
@@ -44,5 +42,4 @@ class adhoc_task_service extends service {
 
         return $result;
     }
-
 }
