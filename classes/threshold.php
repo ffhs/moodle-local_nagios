@@ -26,8 +26,6 @@
 
 namespace local_nagios;
 
-defined('MOODLE_INTERNAL') || die();
-
 class threshold {
 
     const OUTSIDE = 0;
@@ -128,7 +126,6 @@ class threshold {
             return $result;
         }
 
-        return;
+        return $result;
     }
-
 }

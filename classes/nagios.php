@@ -19,8 +19,10 @@
  *
  * Numeric value:   |   Status  |   Description
  * 0                |    OK     |   The plugin was able to check the service and it appeared to be functioning properly.
- * 1                |  Warning  |   The plugin was able to check the service, but it appeared to be above some "warning" threshold or did not appear to be working properly.
- * 2                |  Critical |   The plugin detected that either the service was not running or it was above some "critical" threshold.
+ * 1                |  Warning  |   The plugin was able to check the service, but it appeared to be above some
+ *                                  "warning" threshold or did not appear to be working properly.
+ * 2                |  Critical |   The plugin detected that either the service was not running or it was above some
+ *                                  "critical" threshold.
  * 3                |  Unknown  |   The plugin was unable to determine the status of the service.
  *
  * @package    local_nagios
@@ -31,8 +33,6 @@
 
 namespace local_nagios;
 
-defined('MOODLE_INTERNAL') || die();
-
 class nagios {
 
     protected $now;
@@ -41,6 +41,7 @@ class nagios {
         $format = '%b %d %H:%M:%S';
         $this->now = userdate(time(), $format);
     }
+
     /**
      * Sends a good Nagios response, with message.
      *

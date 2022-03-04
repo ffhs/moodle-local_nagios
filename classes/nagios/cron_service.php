@@ -26,11 +26,9 @@
 
 namespace local_nagios\nagios;
 
+use local_nagios\service;
 use local_nagios\status_result;
 use local_nagios\thresholds;
-use local_nagios\service;
-
-defined('MOODLE_INTERNAL') || die();
 
 class cron_service extends service {
 
@@ -42,6 +40,7 @@ class cron_service extends service {
         } else {
             $lastcron = $DB->get_field_sql('SELECT MAX(lastruntime) FROM {task_scheduled}');
         }
+
         $currenttime = time();
         $difference = $currenttime - $lastcron;
 
@@ -57,5 +56,4 @@ class cron_service extends service {
 
         return $result;
     }
-
 }
