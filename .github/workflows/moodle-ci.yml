@@ -113,8 +113,12 @@ jobs:
         run: moodle-plugin-ci grunt
 
       - name: PHPUnit tests
-        if: ${{ always() }}
+        if: ${{ matrix.php != '8.0' }} # Remove that line after Moodle switches from phpdbg to php-pcov due to "Segmentation fault (core dumped)".
         run: moodle-plugin-ci phpunit --coverage-clover
+
+      - name: PHPUnit tests (without coverage)
+        if: ${{ matrix.php == '8.0' }}
+        run: moodle-plugin-ci phpunit
 
       - name: Behat features
         if: ${{ always() }}
