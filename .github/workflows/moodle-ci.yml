@@ -121,6 +121,7 @@ jobs:
         run: moodle-plugin-ci behat --profile chrome
 
       - name: Coveralls upload
+        continue-on-error: true # This step will show errors but will not fail
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         if: ${{ matrix.php == '7.4' && matrix.moodle-branch == 'MOODLE_311_STABLE' && matrix.database == 'mariadb'}}
