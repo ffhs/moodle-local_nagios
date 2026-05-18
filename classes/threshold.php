@@ -27,7 +27,6 @@
 namespace local_nagios;
 
 class threshold {
-
     const OUTSIDE = 0;
     const INSIDE = 1;
 
@@ -49,7 +48,6 @@ class threshold {
         if ($end == INF) {
             $this->endinfinity = true;
         }
-
     }
 
     /**

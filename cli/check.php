@@ -37,8 +37,8 @@ require_once($CFG->libdir . '/clilib.php');
 defined('MOODLE_INTERNAL') || die();
 
 // Get cli options.
-list($options, $unrecognized) = cli_get_params(
-    array(
+[$options, $unrecognized] = cli_get_params(
+    [
         'plugin' => false,
         'service' => false,
         'task' => false,
@@ -47,9 +47,9 @@ list($options, $unrecognized) = cli_get_params(
         'condition' => false,
         'warning' => false,
         'critical' => false,
-        'help' => false
-    ),
-    array(
+        'help' => false,
+    ],
+    [
         'h' => 'help',
         'p' => 'plugin',
         's' => 'service',
@@ -58,8 +58,8 @@ list($options, $unrecognized) = cli_get_params(
         'y' => 'table',
         'z' => 'condition',
         'w' => 'warning',
-        'c' => 'critical'
-    )
+        'c' => 'critical',
+    ]
 );
 
 if ($options['help']) {

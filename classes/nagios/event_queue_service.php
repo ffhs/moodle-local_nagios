@@ -35,8 +35,7 @@ use local_nagios\status_result;
 use local_nagios\thresholds;
 
 class event_queue_service extends service {
-
-    public function check_status(thresholds $thresholds, $params = array()) {
+    public function check_status(thresholds $thresholds, $params = []) {
         global $DB;
         $count = $DB->count_records('events_queue_handlers');
         $result = new status_result();

@@ -31,8 +31,7 @@ use local_nagios\status_result;
 use local_nagios\thresholds;
 
 class cron_service extends service {
-
-    public function check_status(thresholds $thresholds, $params = array()) {
+    public function check_status(thresholds $thresholds, $params = []) {
         global $CFG, $DB;
 
         if ($CFG->branch < 27) {

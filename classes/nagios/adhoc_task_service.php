@@ -31,8 +31,7 @@ use local_nagios\status_result;
 use local_nagios\thresholds;
 
 class adhoc_task_service extends service {
-
-    public function check_status(thresholds $thresholds, $params = array()) {
+    public function check_status(thresholds $thresholds, $params = []) {
         global $DB;
         $count = $DB->count_records('task_adhoc');
         $result = new status_result();

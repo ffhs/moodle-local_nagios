@@ -26,33 +26,33 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$services = array(
-    'scheduled_task' => array(
+$services = [
+    'scheduled_task' => [
         'classname' => 'local_nagios\nagios\scheduled_task_service',
-        'params' => array(
-            'task' => false
-        )
-    ),
-    'adhoc_task' => array(
-        'classname' => 'local_nagios\nagios\adhoc_task_service'
-    ),
-    'event_queue' => array(
-        'classname' => 'local_nagios\nagios\event_queue_service'
-    ),
-    'cron' => array(
-        'classname' => 'local_nagios\nagios\cron_service'
-    ),
-    'log_task' => array(
+        'params' => [
+            'task' => false,
+        ],
+    ],
+    'adhoc_task' => [
+        'classname' => 'local_nagios\nagios\adhoc_task_service',
+    ],
+    'event_queue' => [
+        'classname' => 'local_nagios\nagios\event_queue_service',
+    ],
+    'cron' => [
+        'classname' => 'local_nagios\nagios\cron_service',
+    ],
+    'log_task' => [
         'classname' => 'local_nagios\nagios\log_task_service',
-        'params' => array(
-            'strtotime' => false
-        )
-    ),
-    'errors_in_table' => array(
+        'params' => [
+            'strtotime' => false,
+        ],
+    ],
+    'errors_in_table' => [
         'classname' => 'local_nagios\nagios\errors_in_table_service',
-        'params' => array(
+        'params' => [
             'table' => false,
-            'condition' => false
-        )
-    )
-);
+            'condition' => false,
+        ],
+    ],
+];

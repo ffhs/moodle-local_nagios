@@ -31,10 +31,7 @@ use local_nagios\status_result;
 use local_nagios\thresholds;
 use local_nagios\service;
 
-defined('MOODLE_INTERNAL') || die();
-
 class errors_in_table_service extends service {
-
     public function check_status(thresholds $thresholds, $params = []): status_result {
         global $DB;
 
@@ -91,7 +88,7 @@ class errors_in_table_service extends service {
     /**
      * Checks if the condition is a valid where statement.
      *
-     * @param $condition
+     * @param string $condition
      * @return bool
      */
     private function validate_condition($condition): bool {

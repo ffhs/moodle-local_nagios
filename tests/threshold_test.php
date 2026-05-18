@@ -28,9 +28,8 @@ namespace local_nagios;
 
 use advanced_testcase;
 
-class threshold_test extends advanced_testcase {
-
-    public function test_defaults() {
+final class threshold_test extends advanced_testcase {
+    public function test_defaults(): void {
         $threshold1 = new threshold();
         $this->assertEquals(null, $threshold1->start);
         $this->assertFalse($threshold1->startinfinity);
@@ -47,7 +46,7 @@ class threshold_test extends advanced_testcase {
         $this->assertEquals(10, $threshold3->end);
     }
 
-    public function test_check() {
+    public function test_check(): void {
         $threshold1 = new threshold(0, 10);
         $this->assertTrue($threshold1->check(50));
         $this->assertFalse($threshold1->check(5));
@@ -56,7 +55,7 @@ class threshold_test extends advanced_testcase {
         $this->assertTrue($threshold2->check(0));
     }
 
-    public function test_parse_range() {
+    public function test_parse_range(): void {
         $t1 = threshold::from_string('10');
         $this->assertEquals(10, $t1->end);
         $this->assertFalse($t1->startinfinity);
@@ -69,6 +68,5 @@ class threshold_test extends advanced_testcase {
         $this->assertEquals(10, $t3->end);
         $this->assertTrue($t3->startinfinity);
         $this->assertEquals(threshold::INSIDE, $t3->alerton);
-
     }
 }

@@ -28,31 +28,28 @@ namespace local_nagios;
 
 use advanced_testcase;
 
-class service_test extends advanced_testcase {
-
-    public function test_service_list() {
+final class service_test extends advanced_testcase {
+    public function test_service_list(): void {
         $list = service::service_list();
         $this->assertArrayHasKey('local_nagios', $list);
         $coreservices = $list['local_nagios'];
         $this->assertArrayHasKey('scheduled_task', $coreservices);
     }
 
-    public function test_get_services() {
+    public function test_get_services(): void {
         $services = service::get_services('local_nagios');
         $this->assertNotNull($services);
         $this->assertArrayHasKey('scheduled_task', $services);
 
         $services = service::get_services('non_existant');
         $this->assertNull($services);
-
     }
 
-    public function test_get_service() {
+    public function test_get_service(): void {
         $service = service::get_service('local_nagios', 'scheduled_task');
         $this->assertInstanceOf('local_nagios\service', $service);
 
         $this->expectException('local_nagios\invalid_service_exception');
         service::get_service('local_nagios', 'non_existent');
     }
-
 }

@@ -28,9 +28,8 @@ namespace local_nagios;
 
 use advanced_testcase;
 
-class thresholds_test extends advanced_testcase {
-
-    public function test_check() {
+final class thresholds_test extends advanced_testcase {
+    public function test_check(): void {
         $t1 = new thresholds();
         $t1->warning = new threshold(0, 10);
         $t1->critical = new threshold(0, 20);

@@ -34,7 +34,6 @@
 namespace local_nagios;
 
 class nagios {
-
     protected $now;
 
     public function __construct() {

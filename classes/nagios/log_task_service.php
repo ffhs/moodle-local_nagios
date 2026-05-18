@@ -30,11 +30,8 @@ use local_nagios\status_result;
 use local_nagios\thresholds;
 use local_nagios\service;
 
-defined('MOODLE_INTERNAL') || die();
-
 class log_task_service extends service {
-
-    public function check_status(thresholds $thresholds, $params = array()) {
+    public function check_status(thresholds $thresholds, $params = []) {
         global $DB;
 
         $count = 0;

@@ -27,7 +27,6 @@
 namespace local_nagios;
 
 class thresholds {
-
     public $warning;
     public $critical;
 

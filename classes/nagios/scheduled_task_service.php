@@ -33,8 +33,7 @@ use local_nagios\status_result;
 use local_nagios\thresholds;
 
 class scheduled_task_service extends service {
-
-    public function check_status(thresholds $thresholds, $params = array()) {
+    public function check_status(thresholds $thresholds, $params = []) {
         if (empty($params['task'])) {
             throw new invalid_service_exception("Task parameter required");
         }

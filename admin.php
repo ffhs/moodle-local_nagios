@@ -25,7 +25,7 @@
  */
 
 require_once('../../config.php');
-require_once($CFG->libdir.'/adminlib.php');
+require_once($CFG->libdir . '/adminlib.php');
 
 require_login(SITEID);
 require_capability('moodle/site:config', context_system::instance());

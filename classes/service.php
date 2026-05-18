@@ -28,7 +28,6 @@
 namespace local_nagios;
 
 abstract class service {
-
     const SERVICELIST_FUNCTION = 'nagios_services';
     const STATUS_FUNCTION = 'nagios_status';
 
@@ -47,11 +46,11 @@ abstract class service {
      * @param array $params an array of parameters
      * @return status_result the results of the check
      */
-    abstract public function check_status(thresholds $thresholds, $params = array());
+    abstract public function check_status(thresholds $thresholds, $params = []);
 
     public function get_param_defs() {
         if (!isset($this->definition) || !isset($this->definition['params'])) {
-            return array();
+            return [];
         } else {
             return $this->definition['params'];
         }
@@ -63,14 +62,14 @@ abstract class service {
      * @return array plugin name => array('name' => '\class\implementing\service')
      */
     public static function service_list() {
-        $result = array();
+        $result = [];
         $plugintypes = \core_component::get_plugin_types();
 
         foreach (array_keys($plugintypes) as $plugintype) {
             $plugins = \core_component::get_plugin_list($plugintype);
 
             foreach (array_keys($plugins) as $plugin) {
-                $frankenstyle = $plugintype. '_' . $plugin;
+                $frankenstyle = $plugintype . '_' . $plugin;
 
                 if ($services = self::get_services($frankenstyle)) {
                     $result[$frankenstyle] = $services;
@@ -82,7 +81,7 @@ abstract class service {
     }
 
     public static function get_services($plugin) {
-        $services = array();
+        $services = [];
 
         $pluginmanager = \core_plugin_manager::instance();
         $plugininfo = $pluginmanager->get_plugin_info($plugin);
