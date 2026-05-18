@@ -21,13 +21,14 @@
  * @copyright  2014 University of Strathclyde
  * @author     Michael Aherne
  * @author     2020 Adrian Perez, Fernfachhochschule Schweiz (FFHS) <adrian.perez@ffhs.ch>
+ * @author     2026 Sascha Vogel, Fernfachhochschule Schweiz (FFHS) <sascha.vogel@ffhs.ch>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_nagios';
-$plugin->version   = 2021052600;
-$plugin->requires  = 2021051700;
+$plugin->version   = 2026051800;
+$plugin->requires  = 2022112800;
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = 'v3.11-r1';
+$plugin->release   = 'v5.2-r1';
