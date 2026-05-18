@@ -31,7 +31,7 @@ class thresholds {
     public $warning;
     public $critical;
 
-    public function __construct(threshold $warning = null, threshold $critical = null) {
+    public function __construct(?threshold $warning = null, ?threshold $critical = null) {
         $this->warning = $warning;
         $this->critical = $critical;
     }
